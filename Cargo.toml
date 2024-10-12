@@ -1,0 +1,2 @@
+[workspace]
+members = ["seekr-server"]

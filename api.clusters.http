@@ -1,0 +1,38 @@
+@base_address = http://localhost:5001/api/v1/clusters
+@id = 01928260-e49c-7a52-8639-13acfb58409c
+
+### Create a new cluster
+POST {{base_address}}
+Content-Type: application/json
+
+{
+    "kind": 1,
+    "name": "testing 2",
+    "config": {
+		"foo": "kt",
+		"fizz": "more"
+	}
+}
+
+### List clusters
+GET {{base_address}}
+
+### Get a cluster by ID
+GET {{base_address}}/{{id}}
+
+### Update a cluster
+PUT {{base_address}}/{{id}}
+Content-Type: application/json
+
+{
+    "id": {{id}},
+    "kind": 1,
+    "name": "testing 2",
+    "config": {
+		"foo": "kt",
+		"fizz": "more"
+	}
+}
+
+### Delete a cluster by ID
+DELETE {{base_address}}/{{id}}

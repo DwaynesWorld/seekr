@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package seekr.api.clusters;
+
+enum ClusterKind {
+  UNSPECIFIED = 0;
+  KAFKA = 1;
+}
+
+message Cluster {
+  // The id of cluster entry.
+  string id = 1;
+
+  // The kind of cluster entry.
+  ClusterKind kind = 2;
+
+  // Cluster name.
+  string name = 3;
+
+  // A key/value pair collection of cluster config options.
+  map<string, string> config = 4;
+
+  // Represents the point in time in UTC Epoch time, when the cluster was
+  // created.
+  int64 created_at = 5;
+
+  // Represents the point in time in UTC Epoch time, when the cluster was
+  // modified.
+  int64 modified_at = 6;
+}
+
+message CreateClusterRequest {
+  // The kind of cluster entry.
+  ClusterKind kind = 1;
+
+  // Cluster name.
+  string name = 2;
+
+  // A key/value pair collection of cluster config options.
+  map<string, string> config = 3;
+}
+
+message CreateClusterResponse { Cluster cluster = 1; }
+
+message ListClustersRequest {}
+
+message ListClustersResponse {
+  repeated Cluster clusters = 1;
+  int64 count = 2;
+}
